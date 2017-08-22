@@ -9,6 +9,7 @@ node {
 	def codeCoverage = "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\Team Tools\\Dynamic Code Coverage Tools\\CodeCoverage.exe\""
 
 	stage 'Checkout'
+		deleteDir()
 		checkout scm
 
 	stage 'Build'
