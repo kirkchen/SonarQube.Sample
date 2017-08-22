@@ -1,5 +1,5 @@
 node {
-    def nuget = 'C:\Tools\nuget\nuget.exe'
+    def nuget = "C:\Tools\nuget\nuget.exe"
 
 	stage 'Checkout'
 		checkout scm
