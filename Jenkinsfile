@@ -1,6 +1,6 @@
 node {
     def nuget = "C:\\Tools\\nuget\\nuget.exe"
-    def msbuild =  "${tool name: 'Default', type: 'msbuild'}\\MSBuild.exe"
+    def msbuild =  "\"${tool name: 'Default', type: 'msbuild'}\\MSBuild.exe\""
 
 	stage 'Checkout'
 		checkout scm
