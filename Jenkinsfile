@@ -5,7 +5,4 @@ node {
 	stage 'Build'
 		bat 'nuget restore SonarQube.Sample.sln'
 		bat "\"${tool name: 'Default', type: 'msbuild'}\""
-
-	stage 'Archive'
-		archive 'ProjectName/bin/Release/**'
 }
