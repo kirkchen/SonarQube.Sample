@@ -10,7 +10,8 @@ namespace SonarQube.Sample
     {
         public int Add(int first, int second)
         {
-            return first + second;
+            first =+ second;
+            return first;
         }
 
         public int Minus(int first, int second)
