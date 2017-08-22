@@ -15,6 +15,9 @@ node {
 	stage 'Begin Analysis'
 		bat "echo ${env.BRANCH_NAME}"
 		switch(env.BRANCH_NAME) {
+			case ~/PR.*/:
+				bat "${sonarqubeScanner} /k:test /n:test /v:1.0.${BUILD_NUMBER} /d:sonar.cs.vscoveragexml.reportsPaths=VisualStudio.coveragexml /d:sonar.cs.vstest.reportsPaths=MSTestResults.trx begin"
+				break
 			case "master":
 				bat "${sonarqubeScanner} /k:test /n:test /v:1.0.${BUILD_NUMBER} /d:sonar.cs.vscoveragexml.reportsPaths=VisualStudio.coveragexml /d:sonar.cs.vstest.reportsPaths=MSTestResults.trx begin"
 				break
