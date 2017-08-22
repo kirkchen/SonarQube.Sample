@@ -4,9 +4,9 @@ node {
     def msbuild =  "\"${msbuildHome}\\MSBuild.exe\""
 	def sonarqubeScannerHome = tool name: 'SonarQubeScannerMsbuild', type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'
 	def sonarqubeScanner = "\"${sonarqubeScannerHome}\\MSBuild.SonarQube.Runner.exe\""
-	def mstest = "\"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\MSTest.exe\""
-	def vstest = "\"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe\""
-	def codeCoverage = "\"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Team Tools\Dynamic Code Coverage Tools\CodeCoverage.exe\""
+	def mstest = "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\Common7\\IDE\\MSTest.exe\""
+	def vstest = "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow\\vstest.console.exe\""
+	def codeCoverage = "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\Team Tools\\Dynamic Code Coverage Tools\\CodeCoverage.exe\""
 
 	stage 'Checkout'
 		checkout scm
