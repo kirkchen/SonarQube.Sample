@@ -1,25 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SonarQube.Sample.Test
 {
+    [TestClass]
     public class CalculatorTest
     {
-        [Theory]
-        [InlineData(1, 1, 2)]
-        [InlineData(2, 2, 4)]
-        public void test_Add_should_be_correct(int first, int second, int expected)
-        {            
+        [TestMethod]
+        public void test_Add_1_and_1_should_be_2()
+        {
+            var first = 1;
+            var second = 1;
+            var expected = 2;
             var actual = 0;
 
             var calculator = new Calculator();
             actual = calculator.Add(first, second);
 
-            Assert.Equal(expected, actual);
+            Assert.AreEqual(expected, actual);
         }
     }
 }
