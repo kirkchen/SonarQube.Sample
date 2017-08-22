@@ -19,5 +19,19 @@ namespace SonarQube.Sample.Test
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void test_Add_2_and_3_should_be_5()
+        {
+            var first = 2;
+            var second = 3;
+            var expected = 5;
+            var actual = 0;
+
+            var calculator = new Calculator();
+            actual = calculator.Add(first, second);
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
