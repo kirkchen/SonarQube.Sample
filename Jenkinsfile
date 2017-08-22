@@ -13,7 +13,16 @@ node {
 		checkout scm
 	
 	stage 'Begin Analysis'
-		bat "${sonarqubeScanner} /k:test /n:test /v:1.0.${BUILD_NUMBER} /d:sonar.cs.vscoveragexml.reportsPaths=VisualStudio.coveragexml /d:sonar.cs.vstest.reportsPaths=MSTestResults.trx begin"
+		switch(env.BRANCH_NAME) {
+			case ~/PR.*/:
+				bat "${sonarqubeScanner} /k:test /n:test /v:1.0.${BUILD_NUMBER} /d:sonar.cs.vscoveragexml.reportsPaths=VisualStudio.coveragexml /d:sonar.cs.vstest.reportsPaths=MSTestResults.trx begin"
+				break
+			case "master":
+				bat "${sonarqubeScanner} /k:test /n:test /v:1.0.${BUILD_NUMBER} /d:sonar.cs.vscoveragexml.reportsPaths=VisualStudio.coveragexml /d:sonar.cs.vstest.reportsPaths=MSTestResults.trx begin"
+				break
+			default:
+				bat "${sonarqubeScanner} /k:test /n:test /v:1.0.${BUILD_NUMBER} /d:sonar.cs.vscoveragexml.reportsPaths=VisualStudio.coveragexml /d:sonar.cs.vstest.reportsPaths=MSTestResults.trx /d:sonar.branch=${env.BRANCH_NAME} begin"
+		}
 
 	stage 'Build'
 		bat "${nuget} restore SonarQube.Sample.sln"
