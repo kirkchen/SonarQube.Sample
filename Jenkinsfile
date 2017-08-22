@@ -13,7 +13,7 @@ node {
 
 	stage 'Build'
 		bat "${nuget} restore SonarQube.Sample.sln"
-		bat "${sonarqubeScanner} /k:test /n:test /v:1.0.${BUILD_NUMBER} begin"
+		bat "${sonarqubeScanner} /k:test /n:test /v:1.0.${BUILD_NUMBER} /d:sonar.cs.vscoveragexml.reportsPaths=VisualStudio.coveragexml /d:sonar.cs.vstest.reportsPaths=MSTestResults.trx begin"
 		bat "${msbuild}"
 		bat "${mstest} /testcontainer:\"SonarQube.Sample.Test\\bin\\Debug\\SonarQube.Sample.Test.dll\" /resultsfile:MSTestResults.trx"
 		bat "${codeCoverage} collect /output:VisualStudio.coverage ${vstest} \"SonarQube.Sample.Test\\bin\\Debug\\SonarQube.Sample.Test.dll\""
