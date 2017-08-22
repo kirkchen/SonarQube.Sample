@@ -5,6 +5,6 @@ node {
 		checkout scm
 
 	stage 'Build'
-		bat '${nuget} restore SonarQube.Sample.sln'
+		bat "${nuget} restore SonarQube.Sample.sln"
 		bat "\"${tool name: 'Default', type: 'msbuild'}\""
 }
