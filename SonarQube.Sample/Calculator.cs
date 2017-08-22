@@ -12,5 +12,10 @@ namespace SonarQube.Sample
         {
             return first + second;
         }
+
+        public int Minus(int first, int second)
+        {
+            return first - second;
+        }
     }
 }
