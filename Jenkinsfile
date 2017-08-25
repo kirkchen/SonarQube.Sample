@@ -16,13 +16,13 @@ node {
 		bat "echo ${env.BRANCH_NAME}"
 		switch(env.BRANCH_NAME) {
 			case "PR-${env.CHANGE_ID}":
-				bat "${sonarqubeScanner} /k:test /n:test /v:1.0.${BUILD_NUMBER} /d:sonar.cs.vscoveragexml.reportsPaths=VisualStudio.coveragexml /d:sonar.cs.vstest.reportsPaths=MSTestResults.trx /d:sonar.analysis.mode=preview /d:sonar.github.repository=kirkchen/sonarqube.sample /d:sonar.github.pullRequest=${env.CHANGE_ID} begin"
+				bat "${sonarqubeScanner} /k:test /n:test /v:1.0.${BUILD_NUMBER} /d:sonar.cs.vscoveragexml.reportsPaths=VisualStudio.coveragexml /d:sonar.cs.vstest.reportsPaths=MSTestResults.trx /d:sonar.analysis.mode=preview /d:sonar.github.repository=kirkchen/sonarqube.sample /d:sonar.github.pullRequest=${env.CHANGE_ID} /d:sonar.login=f4641d202b9ffadfe3e63c6a41a93f02731805d5 begin"
 				break
 			case "master":
-				bat "${sonarqubeScanner} /k:test /n:test /v:1.0.${BUILD_NUMBER} /d:sonar.cs.vscoveragexml.reportsPaths=VisualStudio.coveragexml /d:sonar.cs.vstest.reportsPaths=MSTestResults.trx begin"
+				bat "${sonarqubeScanner} /k:test /n:test /v:1.0.${BUILD_NUMBER} /d:sonar.cs.vscoveragexml.reportsPaths=VisualStudio.coveragexml /d:sonar.cs.vstest.reportsPaths=MSTestResults.trx /d:sonar.login=f4641d202b9ffadfe3e63c6a41a93f02731805d5 begin"
 				break
 			default:
-				bat "${sonarqubeScanner} /k:test /n:test /v:1.0.${BUILD_NUMBER} /d:sonar.cs.vscoveragexml.reportsPaths=VisualStudio.coveragexml /d:sonar.cs.vstest.reportsPaths=MSTestResults.trx /d:sonar.branch=${env.BRANCH_NAME} begin"
+				bat "${sonarqubeScanner} /k:test /n:test /v:1.0.${BUILD_NUMBER} /d:sonar.cs.vscoveragexml.reportsPaths=VisualStudio.coveragexml /d:sonar.cs.vstest.reportsPaths=MSTestResults.trx /d:sonar.login=f4641d202b9ffadfe3e63c6a41a93f02731805d5 /d:sonar.branch=${env.BRANCH_NAME} begin"
 		}
 
 	stage 'Build'
