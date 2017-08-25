@@ -29,8 +29,7 @@ node {
 		bat "${nuget} restore SonarQube.Sample.sln"
 		bat "${msbuild}"
 
-	stage 'Test'
-		bat "${mstest} /testcontainer:\"SonarQube.Sample.Test\\bin\\Debug\\SonarQube.Sample.Test.dll\" /resultsfile:MSTestResults.trx"
+	stage 'Test'	
 		bat "${codeCoverage} collect /output:VisualStudio.coverage ${vstest} \"SonarQube.Sample.Test\\bin\\Debug\\SonarQube.Sample.Test.dll\""
 		bat "${codeCoverage} analyze /output:VisualStudio.coveragexml VisualStudio.coverage"
 
